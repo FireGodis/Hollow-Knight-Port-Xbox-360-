@@ -20,13 +20,12 @@
 
 As capturas mais recentes continuam mostrando os mesmos defeitos. Já foram tentados rebuild de sprites e tilemaps TK2D, ajustes de bounds e mistura alfa nos shaders `Sprites/Default-ColorFlash` e `Sprites/Cherry-Default`. **Essas tentativas não corrigiram a imagem**, então a causa principal segue aberta.
 
-A imagem-fonte do título existe e está ligada ao objeto `LogoTitle`; a cena também usa câmeras separadas para conteúdo, HUD e fundo. Próximos pontos de inspeção:
+A imagem-fonte do título existe e está ligada ao objeto `LogoTitle`; a cena também usa câmeras separadas para conteúdo, HUD e fundo. Uma sonda temporária foi preparada **apenas na cópia local** para registrar em Play Mode câmeras, renderers, bounds e dimensões do vídeo ao carregar cada cena afetada. Ela ainda aguarda uma execução no Editor; não há causa raiz confirmada nem correção visual validada.
 
-1. Transform, projeção, viewport, máscara de culling e profundidade das câmeras persistentes e da `tk2dCamera`.
-2. Valores efetivos dos renderers em Play Mode: sprite, material/shader, textura, sorting layer, bounds e visibilidade.
-3. Vértices, UVs, índices e bounds das malhas geradas para tilemaps TK2D.
-4. Escala e enquadramento do plano de vídeo e proporção do clipe H.264.
-5. Validar menu, abertura e tutorial após cada mudança; compilação sozinha não confirma a correção.
+1. Capturar os valores efetivos de projeção, viewport, máscara, posição e renderers nas três cenas.
+2. Comparar vértices, UVs e bounds das malhas TK2D com a região visível na captura.
+3. Conferir o plano e a proporção do clipe na abertura.
+4. Aplicar uma alteração por vez e validar menu, abertura e tutorial; compilação sozinha não confirma a correção.
 
 ## Abrir a cópia local
 
